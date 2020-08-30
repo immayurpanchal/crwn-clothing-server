@@ -23,14 +23,14 @@ app.post('/payment', (req, res) => {
 	const body = {
 		source: req.body.token.id,
 		amount: req.body.amount,
-		currency: 'usd',
+		currency: 'inr',
 		description: 'This is a test payment from CRWN',
 	};
 
 	stripe.charges.create(body, (stripeErr, stripeRes) => {
 		if (stripeErr) {
 			console.log(stripeErr);
-			res.status(500).send({ error: stripeErr });
+			res.status(500).json({ error: stripeErr });
 		} else {
 			res.status(200).send({ success: stripeRes });
 		}

@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.post('/payment', (req, res) => {
+	console.log('payment end point called');
 	const body = {
 		source: req.body.token.id,
 		amount: req.body.amount,

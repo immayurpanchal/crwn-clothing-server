@@ -18,10 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-	res.status(200).json({ status: 'OK', message: 'Server is up' });
-});
-
 app.post('/payment', (req, res) => {
 	const body = {
 		source: req.body.token.id,
@@ -38,6 +34,10 @@ app.post('/payment', (req, res) => {
 			res.status(200).send({ success: stripeRes });
 		}
 	});
+});
+
+app.get('/', (req, res) => {
+	res.status(200).json({ status: 'OK', message: 'Server is up' });
 });
 
 app.listen(port, (err) => {
